@@ -1,0 +1,17 @@
+/[Oo]bj/
+/[Bb]in/
+
+.vscode/
+.vs/
+
+*.tmp
+*.userprefs
+*.app
+.idea/
+*.VC.*
+.DS_Store
+*~
+*.swp
+
+*.log
+*.pyc
