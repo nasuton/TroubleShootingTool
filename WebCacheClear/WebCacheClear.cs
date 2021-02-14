@@ -10,17 +10,25 @@ namespace TroubleShootingTool
 
         }
 
-        public void StartWebCacheClear()
+        public void EdgeClear()
         {
-            Log.Instance.LogWrite(LogState.INFO, "Webアプリのキャッシュ削除を開始します");
+            Log.Instance.LogWrite(LogState.INFO, "Edgeアプリのキャッシュ削除を開始します");
             //appDataパスを取得
             string appDataPath = "";
             appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-
             EdgeChromiumBaseVer(appDataPath);
             EdgeOldVer(appDataPath);
+            Log.Instance.LogWrite(LogState.INFO, "Edgeアプリのキャッシュ削除を終了します");
+        }
+
+        public void ChromeClear()
+        {
+            Log.Instance.LogWrite(LogState.INFO, "Chromeアプリのキャッシュ削除を開始します");
+            //appDataパスを取得
+            string appDataPath = "";
+            appDataPath = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             Chrome(appDataPath);
-            Log.Instance.LogWrite(LogState.INFO, "Webアプリのキャッシュ削除を終了します");
+            Log.Instance.LogWrite(LogState.INFO, "Chromeアプリのキャッシュ削除を終了します");
         }
 
         //Edge(Chromiumベース)
@@ -31,11 +39,16 @@ namespace TroubleShootingTool
             {
                 GetFileAndFolder(edge_ChromiumBase);
             }
+            else
+            {
+                Log.Instance.LogWrite(LogState.INFO, "Edge(Chromiumベース) のフォルダが見つかりませんでした");
+            }
         }
 
         //Edge(旧バージョン)
         private void EdgeOldVer(string _appDataPath)
         {
+
             string edge_oldVer = Path.Combine(_appDataPath, @"Packages\Microsoft.MicrosoftEdge_8wekyb3d8bbwe\AC\MicrosoftEdge\Cache");
             if (Directory.Exists(edge_oldVer))
             {
@@ -53,6 +66,7 @@ namespace TroubleShootingTool
             {
                 GetFileAndFolder(edge_oldVer002);
             }
+            
         }
 
         //Chrome
