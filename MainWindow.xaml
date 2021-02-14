@@ -3,10 +3,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:TroubleShootingTool"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="トラブルシューティングツール" Height="450" Width="584.958">
     <Grid>
+        <CheckBox x:Name="tempCacheClear" Content="現ログインユーザーのTempフォルダ内の削除" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,33,0,0" Width="249"/>
+        <CheckBox x:Name="edgeCacheClear" Content="Edgeのキャッシュクリア" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,66,0,0" Width="129"/>
+        <CheckBox x:Name="chromeCacheClear" Content="Chromeのキャッシュクリア" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,96,0,0" />
+        <CheckBox x:Name="oneDriveCacheClear" Content="OneDriveのキャッシュクリア" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,158,0,0" Width="152" Checked="oneDriveCacheClear_Checked" Unchecked="oneDriveCacheClear_Unchecked"/>
+        <TextBox x:Name="oneDrivePathDisp" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="503" Margin="48,180,0,0" IsReadOnly="True"/>
+        <Button x:Name="oneDrive_Button" Content="フォルダの選択" HorizontalAlignment="Left" VerticalAlignment="Top" Width="94" RenderTransformOrigin="2.74,6.716" Margin="457,207,0,0" Click="oneDirve_Button_Click"/>
+        <CheckBox x:Name="credClear" Content="資格情報の削除" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,127,0,0" Width="152"/>
+        <CheckBox x:Name="outlookTrouble" Content="Outlookトラブルシューティング" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,246,0,0" Width="163"/>
+        <CheckBox x:Name="skypeTrouble" Content="Skypeトラブルシューティング" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,273,0,0" Width="163"/>
         
+        <Button x:Name="closeButton" Content="閉じる" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="377,377,0,0" Click="closeButton_Click"/>
+        <Button x:Name="runButton" Content="実行する" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="476,377,0,0" Click="runButton_Click"/>
+        <Label Content="※実行時のログファイルがEXEファイルと同じ階層に生成されます" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,341,0,0" Foreground="Red" FontWeight="Bold" FontSize="14"/>
     </Grid>
 </Window>
