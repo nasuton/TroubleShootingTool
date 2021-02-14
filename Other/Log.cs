@@ -27,10 +27,12 @@ namespace TroubleShootingTool
         {
             //実行時パスの取得
             string exePath = Directory.GetCurrentDirectory();
+            //ログファイルの名前を設定
             string logFileName = "TroubleShootingTool_" + DateTime.Now.ToString("yyyyMMddHHmmss") + ".log";
             string logFilePath = Path.Combine(exePath, logFileName);
             //ログファイルを作成
             sw = new StreamWriter(logFilePath, false, Encoding.GetEncoding("Shift_JIS"));
+            //Consoleに書き出すものをログファイルへ書き出すように設定
             Console.SetOut(sw);
             LogWrite(LogState.INFO, "TroubleShootingToolが起動しました");
         }
@@ -49,6 +51,7 @@ namespace TroubleShootingTool
                     Console.WriteLine(now + " [ERROR] " + _message);
                     break;
 
+                //Debug時のみ出力する
                 case LogState.DEBUG:
 #if DEBUG
                     Console.WriteLine(now + " [DEBUG] " + _message);
@@ -66,7 +69,10 @@ namespace TroubleShootingTool
         {
             LogWrite(LogState.INFO, "TroubleShootingToolが終了しました");
             //ファイルを閉じてオブジェクトを破棄
-            sw.Dispose();
+            if(sw != null)
+            {
+                sw.Dispose();
+            }
         }
     }
 }
